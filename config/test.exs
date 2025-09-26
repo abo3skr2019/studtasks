@@ -17,7 +17,7 @@ config :studtasks, Studtasks.Repo,
 # you can enable the server option below.
 config :studtasks, StudtasksWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "ErRQh3M8UaO4+tsPIrx+nt2mt1YTnbekRgMZsIb/bP+RgMtly3bfHAnJIDI+Bnma",
+  secret_key_base: "HCH4CjyyDCZTWmAeVXvUACwA3XUfaSKppcqjtHYhw8BGBpaGNZf7AJJaQwhmoNVC",
   server: false
 
 # In test we don't send emails

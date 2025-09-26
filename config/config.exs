@@ -22,7 +22,7 @@ config :studtasks, :scopes,
 
 config :studtasks,
   ecto_repos: [Studtasks.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime, binary_id: true]
 
 # Configures the endpoint
 config :studtasks, StudtasksWeb.Endpoint,
@@ -33,7 +33,7 @@ config :studtasks, StudtasksWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Studtasks.PubSub,
-  live_view: [signing_salt: "SaBdVHRh"]
+  live_view: [signing_salt: "LkOsoIfA"]
 
 # Configures the mailer
 #

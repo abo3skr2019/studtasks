@@ -7,7 +7,7 @@ defmodule StudtasksWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_studtasks_key",
-    signing_salt: "UP+OWRB6",
+    signing_salt: "OHI70ct6",
     same_site: "Lax"
   ]
 
@@ -25,10 +25,6 @@ defmodule StudtasksWeb.Endpoint do
     from: :studtasks,
     gzip: not code_reloading?,
     only: StudtasksWeb.static_paths()
-
-  if Code.ensure_loaded?(Tidewave) do
-    plug Tidewave
-  end
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

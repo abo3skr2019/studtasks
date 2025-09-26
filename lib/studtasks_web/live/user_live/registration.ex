@@ -24,26 +24,10 @@ defmodule StudtasksWeb.UserLive.Registration do
 
         <.form for={@form} id="registration_form" phx-submit="save" phx-change="validate">
           <.input
-            field={@form[:username]}
-            type="text"
-            label="username"
-            autocomplete="username"
-            required
-            phx-mounted={JS.focus()}
-          />
-          <.input
             field={@form[:email]}
             type="email"
             label="Email"
             autocomplete="username"
-            required
-            phx-mounted={JS.focus()}
-          />
-          <.input
-            field={@form[:password]}
-            type="password"
-            label="Password"
-            autocomplete="new-password"
             required
             phx-mounted={JS.focus()}
           />

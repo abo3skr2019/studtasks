@@ -5,7 +5,6 @@ defmodule Studtasks.Accounts.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "users" do
-    field :username, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -28,22 +27,8 @@ defmodule Studtasks.Accounts.User do
   """
   def email_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :username, :password])
+    |> cast(attrs, [:email])
     |> validate_email(opts)
-    |> validate_username()
-    |> validate_password(opts)
-  end
-
-  def validate_username(changeset) do
-    changeset
-    |> validate_required([:username])
-    |> validate_length(:username, min: 2, max: 20)
-    |> validate_format(:username, ~r/^\w+$/,
-      message: "must have only letters, numbers, or underscores"
-    )
-    |> unique_constraint(:username)
-    |> unsafe_validate_unique(:username, Studtasks.Repo)
-    |> validate_username_changed()
   end
 
   defp validate_email(changeset, opts) do
@@ -68,14 +53,6 @@ defmodule Studtasks.Accounts.User do
   defp validate_email_changed(changeset) do
     if get_field(changeset, :email) && get_change(changeset, :email) == nil do
       add_error(changeset, :email, "did not change")
-    else
-      changeset
-    end
-  end
-
-  defp validate_username_changed(changeset) do
-    if get_field(changeset, :username) && get_change(changeset, :username) == nil do
-      add_error(changeset, :username, "did not change")
     else
       changeset
     end

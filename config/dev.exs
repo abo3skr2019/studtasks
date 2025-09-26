@@ -20,7 +20,7 @@ config :studtasks, StudtasksWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "WGetMNUCYLpzxV0pY3DeYx5b6881oIf4g3MqE2cfLaAVAK3yw/ie8DtqJ8IuAE14",
+  secret_key_base: "uiCwCWP91u+I4b2kvqVACd0Ing/39R7mgULSK/s14jWhFuJuIY7pcTgK7yhYEqQD",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:studtasks, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:studtasks, ~w(--watch)]}
