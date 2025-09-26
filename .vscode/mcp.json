@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "context7": {
+      "type": "stdio",
+      "command": "pnpx",
+      "args": ["@upstash/context7-mcp"]
+    }
+  }
+
+}
