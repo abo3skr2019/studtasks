@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "JakeBecker.elixir-ls",
+        "phoenixframework.phoenix",
+        "esbenp.prettier-vscode"
+    ]
+}
