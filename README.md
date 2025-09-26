@@ -36,6 +36,7 @@ Tasks have 2 Users (1 assigned and 1 Creator) and 1 CourseGroup
 - Analytics using posthog
 - messagin within tasks
 - github integration using oauth and maybe CI/CD requires Research
+- Passkey auth
 
 To start your Phoenix server:
 
