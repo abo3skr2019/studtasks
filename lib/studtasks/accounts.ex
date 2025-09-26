@@ -111,6 +111,10 @@ defmodule Studtasks.Accounts do
     User.email_changeset(user, attrs, opts)
   end
 
+  def change_name(user, attrs \\ %{}) do
+    User.name_changeset(user, attrs)
+  end
+
   @doc """
   Updates the user email using the given token.
 
@@ -130,6 +134,12 @@ defmodule Studtasks.Accounts do
         _ -> {:error, :transaction_aborted}
       end
     end)
+  end
+
+  def update_name(user, attrs \\ %{}) do
+    user
+    |> User.name_changeset(attrs)
+    |> Repo.update()
   end
 
   @doc """

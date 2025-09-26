@@ -109,7 +109,7 @@ defmodule Studtasks.AccountsTest do
   describe "change_user_email/3" do
     test "returns a user changeset" do
       assert %Ecto.Changeset{} = changeset = Accounts.change_user_email(%User{})
-      assert changeset.required == [:email]
+      assert changeset.required == [:name, :email]
     end
   end
 
@@ -392,6 +392,41 @@ defmodule Studtasks.AccountsTest do
   describe "inspect/2 for the User module" do
     test "does not include password" do
       refute inspect(%User{password: "123456"}) =~ "password: \"123456\""
+    end
+  end
+
+  describe "change_name/2" do
+    test "returns a user changeset" do
+      assert %Ecto.Changeset{} = changeset = Accounts.change_name(%User{})
+      assert changeset.required == [:name]
+    end
+  end
+
+  describe "update_name/2" do
+    setup do
+      %{user: user_fixture()}
+    end
+
+    test "validates name", %{user: user} do
+      {:error, changeset} =
+        Accounts.update_name(user, %{
+          name: "a"
+        })
+
+      assert %{name: ["should be at least 2 character(s)"]} = errors_on(changeset)
+    end
+
+    test "updates the name", %{user: user} do
+      new_name = user.name <> " Updated"
+
+      {:ok, user} =
+        Accounts.update_name(user, %{
+          name: new_name
+        })
+
+      assert user.name == new_name
+
+      assert Accounts.get_user_by_email(user.email).name == new_name
     end
   end
 end

@@ -5,6 +5,7 @@ defmodule Studtasks.Accounts.User do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "users" do
+    field :name, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -27,8 +28,24 @@ defmodule Studtasks.Accounts.User do
   """
   def email_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email])
+    |> cast(attrs, [:email, :name])
     |> validate_email(opts)
+    |> validate_name()
+  end
+
+  def validate_name(changeset) do
+    changeset
+    |> validate_required([:name])
+    |> validate_length(:name, min: 2, max: 100)
+    |> validate_format(:name, ~r/^[a-zA-Z\s'-]+$/,
+      message: "can only contain letters, spaces, apostrophes, and hyphens"
+    )
+  end
+
+  def name_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:name])
+    |> validate_name()
   end
 
   defp validate_email(changeset, opts) do

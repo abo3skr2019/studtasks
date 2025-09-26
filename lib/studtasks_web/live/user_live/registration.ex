@@ -31,6 +31,13 @@ defmodule StudtasksWeb.UserLive.Registration do
             required
             phx-mounted={JS.focus()}
           />
+          <.input
+            field={@form[:name]}
+            type="text"
+            label="Name"
+            autocomplete="name"
+            required
+          />
 
           <.button phx-disable-with="Creating account..." class="btn btn-primary w-full">
             Create an account
